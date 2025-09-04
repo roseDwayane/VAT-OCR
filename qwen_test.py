@@ -19,4 +19,6 @@ payload = {
 r = requests.post("http://localhost:11434/api/chat", json=payload, timeout=120)
 print(json.loads(r.text)["message"]["content"].strip())
 
-# python .\qwen_test.py .\invoice.jpg "請給我發票號碼、"
+# python .\qwen_test.py .\invoice.jpg 
+# "請給我整張圖片完整的資訊"
+# "請問這張圖片中的銷售額、營業稅、總計分別是多少"
