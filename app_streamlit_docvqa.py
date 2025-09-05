@@ -14,6 +14,8 @@ def call_ollama(images_b64: List[str], question: str, model: str, base_url: str)
     payload = {
         "model": model,
         "stream": False,
+        "format": "json",
+        "options": {"temperature":0},
         "messages": [
             {"role":"system","content":"You are a document QA assistant. Reply with the exact text span from the document only."},
             {"role":"user","content":"If answer not found, reply `unknown`.", "images": images_b64},
