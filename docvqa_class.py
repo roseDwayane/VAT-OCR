@@ -4,9 +4,9 @@ from typing import Literal, Optional
 from pathlib import Path
 
 labels = [
-    {"name":"business_invoice", "definition":"公司對公司之發票；包含統編、發票字軌與品項總計"},
+    {"name":"business_invoice", "definition":"header is 電子發票證明聯，具有表格的發票，包含統編、發票字軌與品項總計"},
     {"name":"customs_tax_payment", "definition":"關稅/稅單；包含海關或課稅字樣與稅額"},
-    {"name":"receipt", "definition":"店家收據；金額小、列印紙條樣式"},
+    {"name":"receipt2", "definition":"header is 收銀機統一發票"},
     {"name":"id_card", "definition":"身分證或帶大頭照的證件"},
     {"name":"other", "definition":"以上皆非"}
 ]
@@ -15,7 +15,7 @@ system_rules = f"""你是嚴格的影像文件分類器。僅能在下列標籤�
 {[l["name"] for l in labels]}
 判斷原則：依各標籤定義，不確定時選 other。回傳 JSON、且僅能是 JSON。"""
 
-img = "./few_shot_sample/image/8_triple_receipt.jpg"  # ← 改成你的檔案
+img = "./few_shot_sample/image/1_business_invoice.jpg"  # ← 改成你的檔案
 
 from pydantic import BaseModel
 class DocClass(BaseModel):
