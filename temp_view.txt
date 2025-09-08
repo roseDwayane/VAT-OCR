@@ -1,0 +1,37 @@
+﻿from ollama import chat
+from pydantic import ValidationError
+from pathlib import Path
+
+labels = [
+    {"name":"business_invoice", "definition":"?砍撠?訾??潛巨嚗??怎絞蝺具蟡典?頠???蝮質?"},
+    {"name":"customs_tax_payment", "definition":"??/蝔嚗??急絲??隤脩?摮見??憿?},
+    {"name":"receipt", "definition":"摨振?嗆?嚗?憿????啁?璇見撘?},
+    {"name":"id_card", "definition":"頨怠?霅?撣嗅之?剔??隞?},
+    {"name":"other", "definition":"隞乩???"}
+]
+
+system_rules = f"""雿?湔?蔣??隞嗅?憿???賢銝?璅惜銝剝銝??
+{[l["name"] for l in labels]}
+?斗??嚗???蝐文?蝢抬?銝Ⅱ摰???other????JSON?????JSON??""
+
+img = "./few_shot_sample/image/1_business_invoice.jpg"  # ???寞?雿?瑼?
+
+from pydantic import BaseModel
+class DocClass(BaseModel):
+    label: Literal['business_invoice','customs_tax_payment','receipt','id_card','other']
+    confidence: float
+    rationale: str | None
+
+resp = chat(
+    model='qwen2.5vl:7b',
+    messages=[
+        {'role':'system','content':system_rules},
+        {'role':'user',
+         'content':"隢誑?桅???撐??嚗蒂閫??雿???蝺揣??,
+         'images':[img]},  # 頝臬??舐?交?伐??啁??舀嚗????base64
+    ],
+    format=DocClass.model_json_schema(),   # ??撘瑕 JSON Schema
+    options={'temperature':0, 'seed':42},  # 蝛拙?頛詨
+)
+
+print(resp.message.content)  # ?湔??JSON嚗泵??DocClass

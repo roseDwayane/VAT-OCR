@@ -14,7 +14,7 @@ def call_ollama(images_b64: List[str], question: str, model: str, base_url: str)
     payload = {
         "model": model,
         "stream": False,
-        "format": "json",
+        #"format": "json",
         "options": {"temperature":0},
         "messages": [
             {"role":"system","content":"You are a document QA assistant. Reply with the exact text span from the document only."},
@@ -24,6 +24,7 @@ def call_ollama(images_b64: List[str], question: str, model: str, base_url: str)
     }
     r = requests.post(f"{base_url}/api/chat", json=payload, timeout=120)
     r.raise_for_status()
+    print(r)
     return r.json()["message"]["content"].strip()
 
 def to_b64(img: Image.Image) -> str:
@@ -107,56 +108,7 @@ with tab1:
         st.download_button("⬇️ 下載結果 (JSON)", json.dumps(st.session_state.results, ensure_ascii=False).encode("utf-8"),
                            "docvqa_results.json", "application/json")
 
-# --------- Tab 2：批量評測（ANLS） ---------
-with tab2:
-    st.subheader("上傳驗證集 JSONL，批量推理並計算 ANLS")
-    st.caption("預期欄位：questionId, image, question, answers（answers = 字串陣列）。image 建議使用本機路徑。")
-    val_file = st.file_uploader("val.jsonl", type=["jsonl"], accept_multiple_files=False, key="valjsonl")
-    tau = st.slider("ANLS 門檻 tau", 0.0, 1.0, 0.5, 0.05)
-    go = st.button("📈 開始評測")
 
-    if go and val_file is not None:
-        lines = val_file.read().decode("utf-8").splitlines()
-        data = [json.loads(x) for x in lines if x.strip()]
-        prog = st.progress(0)
-        scores, submit = [], []
-        for i, ex in enumerate(data, start=1):
-            # 讀圖：支援絕對/相對路徑
-            img_path = ex["image"]
-            if not os.path.isabs(img_path):
-                # 以當前執行目錄為相對基準
-                img_path = os.path.normpath(img_path)
-            try:
-                im = Image.open(img_path).convert("RGB")
-            except Exception as e:
-                st.error(f"[{ex.get('questionId')}] 圖片讀取失敗：{img_path} ({e})")
-                pred = "unknown"
-                scores.append(anls(pred, ex.get("answers", []), tau))
-                submit.append({"questionId": ex["questionId"], "answer": pred})
-                prog.progress(i/len(data))
-                continue
-
-            b64 = to_b64(im)
-            try:
-                pred = call_ollama([b64], ex["question"], model, base_url)
-            except Exception as e:
-                st.error(f"[{ex.get('questionId')}] 推理失敗：{e}")
-                pred = "unknown"
-
-            scores.append(anls(pred, ex.get("answers", []), tau))
-            submit.append({"questionId": ex["questionId"], "answer": pred})
-            prog.progress(i/len(data))
-
-        mean_anls = round(statistics.mean(scores), 4) if scores else 0.0
-        st.success(f"ANLS = {mean_anls}")
-
-        # 下載 RRC 提交檔（通常是 list[ {questionId, answer} ] 的 JSON）
-        st.download_button(
-            "⬇️ 下載 RRC 提交檔 (JSON)",
-            json.dumps(submit, ensure_ascii=False).encode("utf-8"),
-            file_name="docvqa_submission.json",
-            mime="application/json"
-        )
 
 
 # curl -X POST http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{ "model":"qwen2.5vl:7b", "messages":[{"role":"user","content":"hi"}], "stream":false }'

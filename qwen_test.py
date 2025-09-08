@@ -281,10 +281,11 @@ schema = {
 payload = {
   "model": "qwen2.5vl:7b",   # 若顯存吃緊換成 qwen2.5vl:3b
   "stream": False,
-  "format": "json",
+  #"format": "json",
   "options": {"temperature":0},
   "messages": [
     {"role": "system", "content": "You are a document QA assistant. Return only one JSON object: {'class':'triple_invoice','header':{'PrefixTwoLetters':string,'InvoiceNumber':string},'body':{'InvoiceDay':string,'InvoiceMonth':string,'InvoiceYear':string,'CompanyTaxIDNumber':string},'tail':{'SalesTotalAmount':string,'SalesTax':string},'other':string}. No extra keys or text. Use 'unknown' for any missing field."},
+    #{"role":"system","content":"You are a document QA assistant. Reply with the exact text span from the document only."},
     {"role": "user", "content": "If not found, reply `unknown`.", "images": [b64]},
     {"role": "user", "content": question}
   ]
