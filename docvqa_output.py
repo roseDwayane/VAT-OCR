@@ -29,7 +29,11 @@ class Tail(BaseModel):
 
 
 class ExtractedDoc(BaseModel):
-    doc_class: Literal['business_invoice', 'customs_tax_payment', 'receipt', 'id_card', 'other']
+    doc_class: Literal[
+        'business_invoice', 'customs_tax_payment', 'e_invoice',
+        'plumb_payment_order', 'tele_payment_order', 'tradition_invoice',
+        'triple_invoice', 'triple_receipt', 'other'
+    ]
     confidence: float
     header: Header | None = None
     tail: Tail | None = None

@@ -9,7 +9,7 @@ with open(img_path, 'rb') as f:
 
 
 payload = {
-  "model": "qwen2.5vl:7b",   # 若顯存吃緊換成 qwen2.5vl:3b
+  "model": "qwen2.5vl:7b",   # llama3.2-vision, qwen2.5vl:7b
   "stream": False,
   #"format": "json",
   "options": {"temperature":0},

@@ -53,7 +53,7 @@ shots = [
 
 
 # Test image (you can change this path)
-test_img_path = ex1_img_path
+test_img_path = './invoice.jpg'
 
 resp = chat(
     model='qwen2.5vl:7b',
