@@ -332,9 +332,58 @@ def _chat_once(model: str, messages: list, fmt=None):
     return chat(**kwargs)
 
 
+# Public wrapper for reuse in other modules
+def chat_once(model: str, messages: list, fmt=None):
+    return _chat_once(model, messages, fmt)
+
+
+def build_messages_for_image(b64_image: str) -> list:
+    system_msg = (
+        "You are a document understanding assistant. "
+        "Classify the document into one of: "
+        "['business_invoice','customs_tax_payment','e_invoice','plumb_payment_order',"
+        "'tele_payment_order','tradition_invoice','triple_invoice','triple_receipt','other']. "
+        "Then extract fields into JSON with keys: doc_class, header, body, tail, rationale (optional). "
+        "Amounts must be digits only (no commas). If unknown, use null or omit the property. "
+        "Return JSON only, no extra text."
+    )
+
+    user_msg = (
+        "請分類這張文件並輸出單一 JSON："
+        "1) 給出 doc_class（上述類別其一）；"
+        "2) 依 header/body/tail 結構輸出欄位；未知請為 null 或省略；"
+        "3) 可附上 rationale（可省略）；只輸出 JSON，勿加解說。"
+    )
+
+    messages = [
+        {"role": "system", "content": system_msg},
+        *shots,
+        {"role": "user", "content": user_msg, "images": [b64_image]},
+    ]
+    return messages
+
+
+def infer_image_json(img_path: str, model: str = 'qwen2.5vl:7b') -> str:
+    """Run a single-image inference and return JSON string content.
+
+    Returns the assistant content as JSON string. Falls back to extracting
+    the first JSON block if the model returns extra text.
+    """
+    b64 = img_to_b64(img_path)
+    messages = build_messages_for_image(b64)
+
+    try:
+        resp = _chat_once(model, messages, fmt="json")
+        return resp.message.content
+    except Exception:
+        # Fallback without format
+        resp = _chat_once(model, messages, fmt=None)
+        return _extract_first_json_block(resp.message.content)
+
+
 if __name__ == "__main__":
     # Prefer CLI arg for image path; fall back to sample
-    test_img_path = './few_shot_sample/image/3_e_invoice.jpg' #'./few_shot_sample/image/1_business_invoice.jpg', './invoice2.jpg'
+    test_img_path = './invoice2.jpg' #'./few_shot_sample/image/1_business_invoice.jpg', './invoice2.jpg'
     img_path = sys.argv[1] if len(sys.argv) > 1 else test_img_path
     b64 = img_to_b64(img_path)
 
