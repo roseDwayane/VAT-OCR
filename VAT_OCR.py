@@ -5,6 +5,53 @@ from pydantic import BaseModel
 from ollama import chat
 import sys
 import json
+import base64
+
+def img_to_b64(path: str) -> str:
+    with open(path, 'rb') as f:
+        return base64.b64encode(f.read()).decode('utf-8')
+
+triple_receipt = """{
+    "doc_class": "triple_receipt",
+    "rationale":"收銀機統一發票，包含發票號碼、日期、統編、買受人、銷售額、營業稅、總計",
+    "header": {
+        "PrefixTwoLetters": "RH",
+        "InvoiceNumber": "15255935"
+    },
+    "body": {
+        "CompanyName": "九達生活禮品股份有限公司",
+        "PhoneNumber": "06-2702917",
+        "CompanyTaxIDNumber": "#16900386",
+        "CompanyAddress": "台南市歸仁區許厝里公園路152號1樓",
+        "InvoiceYear": "110",
+        "InvoiceMonth": "9",
+        "InvoiceDay": "17",
+        "BuyerTaxIDNumber": "53812386",
+        "BuyerName": "彩琿實業有限公司",
+        "Abstract": "喵咪刺繡皮標上翻筆貸 105個 119.73 12,572"
+    },
+    "tail": {
+        "SalesTotalAmount": "12572",
+        "SalesTax": "629",
+        "TotalAmount": "13201"
+    }
+}
+"""
+
+ex8_img_path = './few_shot_sample/image/8_triple_receipt.jpg'
+
+shots = [
+    # 8.
+    {
+        'role': 'user',
+        'content': '請分類這張文件',
+        'images': [img_to_b64(ex8_img_path)],
+    },
+    {
+        'role': 'assistant',
+        'content': triple_receipt,
+    },
+]
 
 # ====== JSON Schema（Pydantic）======
 DocClass = Literal[
@@ -47,13 +94,11 @@ def infer_image_json(
         "3) 可附上 rationale（可省略）；只輸出 JSON，勿加解說。"
     )
 
+    b64 = img_to_b64(img_path)
+
     messages = [
-        {
-            "role": "user",
-            "content": user_prompt,
-            # 直接傳圖片路徑；也可改成 base64 串列
-            "images": [img_path],
-        }
+        *shots,
+        {"role": "user", "content": user_prompt, "images": [b64]},
     ]
 
     # 優先：Structured Outputs（最穩）
@@ -79,6 +124,7 @@ def infer_image_json(
 # ====== CLI ======
 if __name__ == "__main__":
     img_path = sys.argv[1] if len(sys.argv) > 1 else "./invoice2.jpg"
+    print("I'm processing")
     out = infer_image_json(img_path)
     # 若你想驗證 Schema，可反序列化看看
     try:

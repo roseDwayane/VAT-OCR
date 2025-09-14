@@ -5,8 +5,8 @@ from PIL import Image
 from collections import OrderedDict
 
 # Import inference helpers from docvqa_final2
-from docvqa_final2 import infer_image_json, _extract_first_json_block, chat_once, build_messages_for_image, img_to_b64  # noqa: F401
-
+# from docvqa_final2 import infer_image_json, _extract_first_json_block, chat_once, build_messages_for_image, img_to_b64  # noqa: F401
+from VAT_OCR import infer_image_json, _extract_first_json_block
 
 def extract_ground_truth(d: dict) -> dict:
     # 依指定順序輸出 9 個欄位；缺值給空字串
@@ -81,7 +81,7 @@ for entry in tqdm(entries, desc="Processing entries"):
         image = Image.open(img_path)
         # 進行一次推論，並取出 9 欄位
         pred9 = infer_and_flatten(img_path)
-        #print(json.dumps(pred9, ensure_ascii=False, indent=2))
+        print(json.dumps(pred9, ensure_ascii=False, indent=2))
 
         if gtd != pred9:
             for k, va, vb in diff_flat(gtd, pred9):
@@ -95,6 +95,8 @@ for entry in tqdm(entries, desc="Processing entries"):
     except:
         error = error +1
         continue
+
+    break
     
 print(error)
 """

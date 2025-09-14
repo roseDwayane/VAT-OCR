@@ -9,7 +9,7 @@ with open(img_path, 'rb') as f:
 
 
 payload = {
-  "model": "qwen2.5vl:7b",   # llama3.2-vision, qwen2.5vl:7b, gemma3:12b
+  "model": "invoice-cls",   # llama3.2-vision, qwen2.5vl:7b, gemma3:12b, invoice-cls
   "stream": False,
   #"format": "json",
   "options": {"temperature":0},
