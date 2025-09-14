@@ -9,13 +9,13 @@ with open(img_path, 'rb') as f:
 
 
 payload = {
-  "model": "invoice-cls",   # llama3.2-vision, qwen2.5vl:7b, gemma3:12b, invoice-cls
+  "model": "my-qwen25vl",   # llama3.2-vision, qwen2.5vl:7b, gemma3:12b, invoice-cls, my-qwen25vl
   "stream": False,
-  #"format": "json",
-  "options": {"temperature":0},
+  "format": "json",
+  "options": {"temperature":0.1, "repeat_penalty": 1.5},
   "messages": [
-    {"role":"system","content":"You are a document QA assistant. Reply with the exact text span from the document only."},
-    {"role": "user", "content": "If not found, reply `unknown`.", "images": [b64]},
+    #{"role":"system","content":"You are a document QA assistant. Reply with the exact text span from the document only."},
+    {"role": "user", "content": "If not found, reply `unknown`.", "images": [img_path]},
     {"role": "user", "content": question}
   ]
 }

@@ -383,7 +383,8 @@ def infer_image_json(img_path: str, model: str = 'qwen2.5vl:7b') -> str:
 
 if __name__ == "__main__":
     # Prefer CLI arg for image path; fall back to sample
-    test_img_path = './invoice2.jpg' #'./few_shot_sample/image/1_business_invoice.jpg', './invoice2.jpg'
+    test_img_path = 'C:\\Users\\user\\pythonproject\\AllDataset\\VAT-OCR\\triple_receipt\\image\\photo_20240920084447_4.jpg' #'./few_shot_sample/image/1_business_invoice.jpg', './invoice2.jpg'
+    # C:\Users\user\pythonproject\AllDataset\VAT-OCR\triple_receipt\image\photo_20240920084447_4.jpg
     img_path = sys.argv[1] if len(sys.argv) > 1 else test_img_path
     b64 = img_to_b64(img_path)
 
