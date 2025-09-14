@@ -210,6 +210,7 @@ merged_full/
 merged_model/
 outputs/
 unsloth_compiled_cache/
+llama.cpp/
 
 *.gguf
 
