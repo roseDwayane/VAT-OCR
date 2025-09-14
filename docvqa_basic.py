@@ -1,7 +1,7 @@
 # save as qwen_test.py
 import base64, requests, sys, json, time
 
-img_path = sys.argv[1]          # e.g. .\samples\invoice.jpg
+img_path = sys.argv[1]          # e.g. .\invoice.jpg
 question = sys.argv[2]          # e.g. "What is the invoice number?"
 
 with open(img_path, 'rb') as f:
@@ -9,7 +9,7 @@ with open(img_path, 'rb') as f:
 
 
 payload = {
-  "model": "qwen2.5vl:7b",   # llama3.2-vision, qwen2.5vl:7b
+  "model": "qwen2.5vl:7b",   # llama3.2-vision, qwen2.5vl:7b, gemma3:12b
   "stream": False,
   #"format": "json",
   "options": {"temperature":0},
