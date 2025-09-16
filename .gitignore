@@ -210,7 +210,8 @@ merged_full/
 merged_model/
 outputs/
 unsloth_compiled_cache/
-llama.cpp/
+llama_cpp/
+VAT_model/
 
 *.gguf
 
