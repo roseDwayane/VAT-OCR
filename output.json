@@ -1,2183 +1,314 @@
 Total entries found: 1258
 Processing entries:   0%|          | 0/1258 [00:00<?, ?it/s]1.json
-Processing entries:   0%|          | 1/1258 [00:18<6:22:34, 18.26s/it]json is good!
+Processing entries:   0%|          | 1/1258 [00:14<5:11:47, 14.88s/it]json is good!
 bad json is repaired!
-{
+<class 'str'> {
   "gt_parse": {
-    "body": {
-      "Abstract": "零件2批 25780",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建印貿易有限公司",
-      "BuyerTaxIDNumber": "12361988",
-      "InvoiceDay": "6",
-      "InvoiceMonth": "3",
-      "InvoiceNumber": "54957806",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "KY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "中山區新生北路3段93巷18號",
-      "CompanyName": "暉汽材有限公司",
-      "CompanyTaxIDNumber": "12868673",
-      "SalesTax": "1289",
-      "SalesTotalAmount": "25780",
-      "TotalAmount": "27069"
-    }
+    "Abstract": "零件2批 25780",
+    "BuyerName": "建印貿易有限公司",
+    "BuyerTaxIDNumber": "12361988",
+    "CompanyAddress": "台北市新生北路3段93巷18號",
+    "CompanyName": "暉汽材有限公司",
+    "CompanyTaxIDNumber": "12868673",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "6",
+    "InvoiceMonth": "3",
+    "InvoiceNumber": "54957806",
+    "InvoiceYear": "112",
+    "PhoneNumber": "02-2599-5123",
+    "PrefixTwoLetters": "KY",
+    "Rationale": "統一發票(三聯式)",
+    "SalesTax": "1289",
+    "SalesTotalAmount": "25780",
+    "TotalAmount": "27069"
   }
 }
 10.json
-Processing entries:   0%|          | 2/1258 [00:35<6:10:14, 17.69s/it]json is good!
+Processing entries:   0%|          | 2/1258 [00:30<5:23:12, 15.44s/it]json is good!
 bad json is repaired!
-{
+<class 'str'> {
   "gt_parse": {
-    "body": {
-      "Abstract": "輕片 14 40 560",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12709444",
-      "InvoiceDay": "15",
-      "InvoiceMonth": "3",
-      "InvoiceNumber": "44977663",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "KY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台南市歸仁區民生南街一段32號",
-      "CompanyName": "隆鑫國際有限公司",
-      "CompanyTaxIDNumber": "12709444",
-      "SalesTax": "28",
-      "SalesTotalAmount": "560",
-      "TotalAmount": "588"
-    }
+    "Abstract": "壓片 14 40 560",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12709444",
+    "CompanyAddress": "台南市歸仁區南興里民生南街一段32號",
+    "CompanyName": "隆鑫國際有限公司",
+    "CompanyTaxIDNumber": "12709444",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "15",
+    "InvoiceMonth": "3",
+    "InvoiceNumber": "44977663",
+    "InvoiceYear": "112",
+    "PhoneNumber": "06-2795880",
+    "PrefixTwoLetters": "KY",
+    "Rationale": "統一發票(三聯式)包含發票號碼、日期、買受人、統編、銷售額、營業稅、總計",
+    "SalesTax": "28",
+    "SalesTotalAmount": "560",
+    "TotalAmount": "588"
   }
 }
 100.json
-Processing entries:   0%|          | 3/1258 [00:56<6:42:07, 19.23s/it]json is good!
+Processing entries:   0%|          | 3/1258 [00:47<5:35:22, 16.03s/it]json is good!
 bad json is repaired!
-{
-  "raw": "{'gt_parse': {'body': {'Abstract': '皮帶 5 230 1150 皮帶 3 135 405 皮帶 1 105 105', 'BuyerName': '建邦貿易有限公司', 'BuyerTaxIDNumber': '12361788', 'CompanyAddress': '台北市建國北路三段119巷7弄13號', 'CompanyName': '合飛企業有限公司', 'CompanyTaxIDNumber': '12528062', 'InvoiceDay': '30', 'InvoiceMonth': '4', 'InvoiceYear': '112', 'PhoneNumber': '02-25012804'}, 'doc_class': 'triple_receipt', 'header': {'BuyerName': None, 'BuyerTaxIDNumber': None, 'InvoiceDay': None, 'InvoiceMonth': None, 'InvoiceNumber': '51981199', 'InvoiceYear': None, 'PrefixTwoLetters': 'KY', 'SalesTax': '83', 'SalesTotalAmount': '1660'}, 'rationale': '統一發票(三聯式)', 'tail': {'CompanyAddress': None, 'CompanyName': None, 'CompanyTaxIDNumber': None, 'PhoneNumber': None, 'SalesTotalAmountWithTax': '1743'}}}}"
+<class 'str'> {
+  "gt_parse": {
+    "Abstract": "皮帶 5 230 1150 皮帶 3 135 405 皮帶 1 105 105",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "CompanyAddress": "台北市建國北路三段119巷7弄13號",
+    "CompanyName": "合飛企業有限公司",
+    "CompanyTaxIDNumber": "12528062",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "30",
+    "InvoiceMonth": "4",
+    "InvoiceNumber": "51981199",
+    "InvoiceYear": "112",
+    "PhoneNumber": "02-25012804",
+    "PrefixTwoLetters": "KY",
+    "Rationale": "統一發票，包含品名、數量、單價、金額等",
+    "SalesTax": "83",
+    "SalesTotalAmount": "1660",
+    "TotalAmount": "1743"
+  }
 }
 101.json
-Processing entries:   0%|          | 4/1258 [01:14<6:30:12, 18.67s/it]json is good!
+Processing entries:   0%|          | 4/1258 [01:01<5:20:52, 15.35s/it]json is good!
 bad json is repaired!
-{
+<class 'str'> {
   "gt_parse": {
-    "body": {
-      "Abstract": "汽車零件一批 4600",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "30",
-      "InvoiceMonth": "4",
-      "InvoiceNumber": "03147223",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "KY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "高雄市武雅區建國一路72巷8號1樓",
-      "CompanyName": "日誠興業有限公司",
-      "CompanyTaxIDNumber": "90654971",
-      "SalesTax": "230",
-      "SalesTotalAmount": "4600",
-      "TotalAmount": "4830"
-    }
+    "Abstract": "汽車零件一批 4600",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "CompanyAddress": "高雄市武雅區建國一路72巷8號1樓",
+    "CompanyName": "日誠興業有限公司",
+    "CompanyTaxIDNumber": "90654971",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "30",
+    "InvoiceMonth": "4",
+    "InvoiceNumber": "03147223",
+    "InvoiceYear": "112",
+    "PhoneNumber": "(07)7521765",
+    "PrefixTwoLetters": "KY",
+    "Rationale": "統一發票(三聯式)",
+    "SalesTax": "230",
+    "SalesTotalAmount": "4600",
+    "TotalAmount": "4830"
   }
 }
 111.json
-Processing entries:   0%|          | 5/1258 [01:32<6:22:56, 18.34s/it]json is good!
+Processing entries:   0%|          | 5/1258 [01:16<5:16:20, 15.15s/it]json is good!
 bad json is repaired!
-{
+<class 'str'> {
   "gt_parse": {
-    "body": {
-      "Abstract": "汽門室組 2 830 1660",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "4",
-      "InvoiceMonth": "5",
-      "InvoiceNumber": "19603101",
-      "InvoiceYear": "112"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台中市南區新榮里新華街62號1樓",
-      "CompanyName": "厚德汽車材料股份有限公司",
-      "CompanyTaxIDNumber": "54766500",
-      "SalesTax": "83",
-      "SalesTotalAmount": "1660",
-      "TotalAmount": "1743"
-    }
+    "Abstract": "汽門室組 2 830 1660",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "CompanyAddress": "台中市南區新榮里新華街62號1樓",
+    "CompanyName": "厚德汽車材料股份有限公司",
+    "CompanyTaxIDNumber": "54766500",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "4",
+    "InvoiceMonth": "5",
+    "InvoiceNumber": "19603101",
+    "InvoiceYear": "112",
+    "PhoneNumber": "04-22267026",
+    "PrefixTwoLetters": "MY",
+    "Rationale": "統一發票(三聯式)",
+    "SalesTax": "83",
+    "SalesTotalAmount": "1660",
+    "TotalAmount": "1743"
   }
 }
 119.json
-Processing entries:   0%|          | 6/1258 [01:54<6:47:28, 19.53s/it]json is good!
+Processing entries:   0%|          | 6/1258 [01:30<5:10:14, 14.87s/it]json is good!
 bad json is repaired!
-{
+<class 'str'> {
   "gt_parse": {
-    "body": {
-      "Abstract": "三溫環 1800 1800 活塞環 1500 1500",
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": "9",
-      "InvoiceMonth": "5",
-      "InvoiceYear": "112",
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "9",
-      "InvoiceMonth": "5",
-      "InvoiceNumber": "00000203",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "MY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "新興區忠孝一路500巷10號1F",
-      "CompanyName": "鍵鑽汽車材料行",
-      "CompanyTaxIDNumber": "08920466",
-      "PhoneNumber": "2360012~6",
-      "SalesTax": "165",
-      "SalesTotalAmount": "3300",
-      "TotalAmount": "3465"
-    }
+    "Abstract": "1800 1500",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "CompanyAddress": "高雄市新興區忠孝一路500巷10號1F",
+    "CompanyName": "鍵鑽汽車材料行",
+    "CompanyTaxIDNumber": "08920466",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "9",
+    "InvoiceMonth": "5",
+    "InvoiceNumber": "00000203",
+    "InvoiceYear": "112",
+    "PhoneNumber": "2360012",
+    "PrefixTwoLetters": "MY",
+    "Rationale": "統一發票(三聯式)",
+    "SalesTax": "165",
+    "SalesTotalAmount": "3300",
+    "TotalAmount": "3465"
   }
 }
 139.json
-Processing entries:   1%|          | 7/1258 [02:09<6:22:11, 18.33s/it]json is good!
+Processing entries:   1%|          | 7/1258 [01:44<5:02:38, 14.52s/it]json is good!
 bad json is repaired!
-{
+<class 'str'> {
   "gt_parse": {
-    "body": {
-      "Abstract": "汽車零件 476",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "CompanyAddress": "台南市東區崇善路465號",
-      "CompanyName": "金海企業商行",
-      "CompanyTaxIDNumber": "88885912",
-      "InvoiceDay": "26",
-      "InvoiceMonth": "5",
-      "InvoiceYear": "112"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "SalesTax": "22",
-      "SalesTotalAmount": "476",
-      "TotalAmount": "500"
-    }
+    "Abstract": "汽車零件 476",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "CompanyAddress": "台南市東區崇善路465號",
+    "CompanyName": "金海企業商行",
+    "CompanyTaxIDNumber": "88885912",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "26",
+    "InvoiceMonth": "5",
+    "InvoiceNumber": "14224506",
+    "InvoiceYear": "112",
+    "PhoneNumber": "(06)2676388",
+    "PrefixTwoLetters": "MY",
+    "Rationale": "統一發票(三聯式)",
+    "SalesTax": "22",
+    "SalesTotalAmount": "476",
+    "TotalAmount": "500"
   }
 }
 140.json
-Processing entries:   1%|          | 8/1258 [02:27<6:16:14, 18.06s/it]json is good!
+Processing entries:   1%|          | 8/1258 [01:58<4:59:41, 14.38s/it]json is good!
 bad json is repaired!
-{
+<class 'str'> {
   "gt_parse": {
-    "body": {
-      "Abstract": "零件乙批 3500",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "26",
-      "InvoiceMonth": "5",
-      "InvoiceNumber": "55544520",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "MY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "新生北路3段93巷18號",
-      "CompanyName": "金暉汽材有限公司",
-      "CompanyTaxIDNumber": "12868673",
-      "SalesTax": "175",
-      "SalesTotalAmount": "3500",
-      "TotalAmount": "3675"
-    }
+    "Abstract": "零件乙批 3500",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "CompanyAddress": "台北市新生北路3段93巷18號",
+    "CompanyName": "金暉汽材有限公司",
+    "CompanyTaxIDNumber": "12868673",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "26",
+    "InvoiceMonth": "5",
+    "InvoiceNumber": "55544520",
+    "InvoiceYear": "112",
+    "PhoneNumber": "02-2599-5123",
+    "PrefixTwoLetters": "MY",
+    "Rationale": "統一發票(三聯式)",
+    "SalesTax": "175",
+    "SalesTotalAmount": "3500",
+    "TotalAmount": "3675"
   }
 }
 149.json
-Processing entries:   1%|          | 9/1258 [02:40<5:41:29, 16.40s/it]json is good!
+Processing entries:   1%|          | 9/1258 [02:12<4:57:42, 14.30s/it]json is good!
 bad json is repaired!
-{
+<class 'str'> {
   "gt_parse": {
-    "body": {
-      "Abstract": "汽車材料 一批 33130",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "30",
-      "InvoiceMonth": "5",
-      "InvoiceNumber": "57191411",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "MY"
-    },
-    "rationale": "統一發票(三聯式)"
+    "Abstract": "汽車材料 一批 33130",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "CompanyAddress": "高雄市三民區鼎新路85號",
+    "CompanyName": "雄振企業有限公司",
+    "CompanyTaxIDNumber": "13182854",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "30",
+    "InvoiceMonth": "5",
+    "InvoiceNumber": "57191411",
+    "InvoiceYear": "112",
+    "PhoneNumber": "07-3108816",
+    "PrefixTwoLetters": "MY",
+    "Rationale": "統一發票(三聯式)",
+    "SalesTax": "1657",
+    "SalesTotalAmount": "33130",
+    "TotalAmount": "34787"
   }
 }
 164.json
-Processing entries:   1%|          | 10/1258 [02:52<5:16:51, 15.23s/it]json is good!
-bad json is repaired!
+Processing entries:   1%|          | 9/1258 [02:26<5:38:07, 16.24s/it]
+
+triple_receipt
+{
+    "Doc_class": "triple_receipt",
+    "PrefixTwoLetters": "RH",
+    "InvoiceNumber": "15255935",
+    "CompanyTaxIDNumber": "16900386",
+    "InvoiceYear": "110",
+    "InvoiceMonth": "9",
+    "InvoiceDay": "17",
+    "BuyerTaxIDNumber": "53812386",
+    "Abstract": "喵咪刺繡皮標上翻筆貸 105個 119.73 12,572",
+    "SalesTotalAmount": "12572",
+    "SalesTax": "629",
+    "TotalAmount": "13201"
+}
+
+triple_invoice
+{
+    "Doc_class": "triple_invoice",
+    "PrefixTwoLetters": "KY",
+    "InvoiceNumber": "51981199",
+    "BuyerTaxIDNumber": "12361788",
+    "InvoiceYear": "112",
+    "InvoiceMonth": "4",
+    "InvoiceDay": "30",
+    "Abstract": "皮帶 5 230 1150 皮帶 3 135 405 皮帶 1 105 105",
+    "SalesTotalAmount": "1660",
+    "SalesTax": "83",
+    "TotalAmount": "1743",
+    "CompanyTaxIDNumber": "12528062",
+}
+
+
 {
   "gt_parse": {
-    "body": {
-      "Abstract": "汽車材料 一批 1130",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12761788",
-      "InvoiceDay": "7",
-      "InvoiceMonth": "5",
-      "InvoiceNumber": "35305123",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "MY"
-    },
-    "rationale": "統一發票(三聯式)"
+    "Abstract": "汽車材料 一批 33130",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "CompanyAddress": "高雄市三民區鼎新路85號",
+    "CompanyName": "雄振企業有限公司",
+    "CompanyTaxIDNumber": "13182854",
+    "Doc_class": "triple_receipt",
+    "InvoiceDay": "30",
+    "InvoiceMonth": "05",
+    "InvoiceNumber": "57191411",
+    "InvoiceYear": "112",
+    "PhoneNumber": "07-3108816",
+    "PrefixTwoLetters": "MY",
+    "Rationale": "統一發票(三聯式)",
+    "SalesTax": "1,657",
+    "SalesTotalAmount": "33,130",
+    "TotalAmount": "34,787"
   }
 }
-168.json
-Processing entries:   1%|          | 11/1258 [03:10<5:31:08, 15.93s/it]json is good!
-bad json is repaired!
+
 {
-  "gt_parse": {
-    "body": {
-      "Abstract": "汽車零件 26000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361738",
-      "InvoiceDay": "21",
-      "InvoiceMonth": "5",
-      "InvoiceNumber": "36317437",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "MY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "新北市五股區五工六路26號",
-      "CompanyName": "昇群汽車股份有限公司",
-      "CompanyTaxIDNumber": "84758318",
-      "SalesTax": "1300",
-      "SalesTotalAmount": "26000",
-      "TotalAmount": "27300"
-    }
-  }
+    "Doc_class": "triple_invoice",
+    "Rationale": "統一發票(三聯式)",
+    "PrefixTwoLetters": "KY",
+    "InvoiceNumber": "51981199",
+    "BuyerName": "建邦貿易有限公司",
+    "BuyerTaxIDNumber": "12361788",
+    "InvoiceYear": "112",
+    "InvoiceMonth": "4",
+    "InvoiceDay": "30",
+    "Abstract": "皮帶 5 230 1150 皮帶 3 135 405 皮帶 1 105 105",
+    "SalesTotalAmount": "1660",
+    "SalesTax": "83",
+    "TotalAmount": "1743",
+    "CompanyName": "合飛企業有限公司",
+    "CompanyTaxIDNumber": "12528062",
+    "PhoneNumber": "02-25012804",
+    "CompanyAddress": "台北市建國北路三段113巷7弄13號"
 }
-174.json
-Processing entries:   1%|          | 12/1258 [03:23<5:14:30, 15.14s/it]json is good!
-bad json is repaired!
+
 {
-  "gt_parse": {
-    "body": {
-      "Abstract": "火星塵 720 170 122400",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易(有限公司)",
-      "BuyerTaxIDNumber": "12361988",
-      "InvoiceDay": "5",
-      "InvoiceMonth": "9",
-      "InvoiceNumber": "54548506",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)"
-  }
+    "Doc_class": "triple_receipt",
+    "Rationale": "收銀機統一發票，包含發票號碼、日期、統編、買受人、銷售額、營業稅、總計",
+    "PrefixTwoLetters": "RH",
+    "InvoiceNumber": "15255935",
+    "CompanyName": "九達生活禮品股份有限公司",
+    "PhoneNumber": "06-2702917",
+    "CompanyTaxIDNumber": "16900386",
+    "CompanyAddress": "台南市歸仁區許厝里公園路152號1樓",
+    "InvoiceYear": "110",
+    "InvoiceMonth": "9",
+    "InvoiceDay": "17",
+    "BuyerTaxIDNumber": "53812386",
+    "BuyerName": "彩琿實業有限公司",
+    "Abstract": "喵咪刺繡皮標上翻筆貸 105個 119.73 12,572",
+    "SalesTotalAmount": "12572",
+    "SalesTax": "629",
+    "TotalAmount": "13201"
 }
-191.json
-Processing entries:   1%|          | 13/1258 [03:42<5:36:15, 16.21s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "汽車零件 10550",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "25",
-      "InvoiceMonth": "9",
-      "InvoiceNumber": "55929352",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "臺北市中山區民族東路252巷26號",
-      "CompanyName": "榮有有限公司",
-      "CompanyTaxIDNumber": "54176032",
-      "PhoneNumber": "(02)2503-0485",
-      "SalesTax": "528",
-      "SalesTotalAmount": "10550",
-      "TotalAmount": "11078"
-    }
-  }
-}
-192.json
-Processing entries:   1%|          | 14/1258 [04:01<5:56:55, 17.21s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "汽材一批 256800",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "26",
-      "InvoiceMonth": "9",
-      "InvoiceNumber": "17727972",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台中市北屯區忠平里陳平路99號1F",
-      "CompanyName": "廣益貿易有限公司",
-      "CompanyTaxIDNumber": "82842331",
-      "PhoneNumber": "(04)22994099",
-      "SalesTax": "12840",
-      "SalesTotalAmount": "256800",
-      "TotalAmount": "269640"
-    }
-  }
-}
-202.json
-Processing entries:   1%|          | 15/1258 [04:23<6:22:37, 18.47s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "分配用 1 5500 5500 剩車盤 2 1400 2800",
-      "BuyerName": "建丰貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "CompanyAddress": "台北市內湖區安康路366巷1號2樓",
-      "CompanyName": "榮毅企業有限公司",
-      "CompanyTaxIDNumber": "12965823",
-      "InvoiceDay": "8",
-      "InvoiceMonth": "9",
-      "InvoiceYear": "112",
-      "PhoneNumber": "02-29801155"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "52343563",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": "415",
-      "SalesTotalAmount": "8300",
-      "TotalAmount": "8715"
-    }
-  }
-}
-234.json
-Processing entries:   1%|▏         | 16/1258 [04:43<6:31:54, 18.93s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "抓漏工程 650 280 182000 防水膜 上小針",
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "新北市蘆洲區民生街107巷9號",
-      "CompanyName": "財盛工程行",
-      "CompanyTaxIDNumber": "31873970",
-      "InvoiceDay": "1",
-      "InvoiceMonth": "7",
-      "InvoiceYear": "112"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "39151151",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": null,
-      "InvoiceYear": null,
-      "SalesTax": "9100",
-      "SalesTotalAmount": "182000",
-      "TotalAmount": "191100"
-    }
-  }
-}
-235.json
-Processing entries:   1%|▏         | 17/1258 [05:00<6:20:47, 18.41s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "木條238x9.5x5cm 200 142.5 38500-",
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "桃園市大華里大興路558號",
-      "CompanyName": "天罡木業有限公司",
-      "CompanyTaxIDNumber": "86945175",
-      "InvoiceDay": "3",
-      "InvoiceMonth": "9",
-      "InvoiceYear": "112",
-      "PhoneNumber": "03-3641315"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "3",
-      "InvoiceMonth": "9",
-      "InvoiceNumber": "40973252",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)"
-  }
-}
-239.json
-Processing entries:   1%|▏         | 18/1258 [05:14<5:54:30, 17.15s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "1個450=450 3個20=60",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": null,
-      "SalesTotalAmount": null,
-      "TotalAmount": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威達舒發用品有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "4",
-      "InvoiceMonth": "7",
-      "InvoiceNumber": "38237605",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)"
-  }
-}
-243.json
-Processing entries:   2%|▏         | 19/1258 [05:35<6:16:52, 18.25s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "197600",
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": "7",
-      "InvoiceMonth": "7",
-      "InvoiceYear": "112",
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "7",
-      "InvoiceMonth": "7",
-      "InvoiceNumber": "51985451",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台北市松山區南京東路5段251巷24弄20之1號2樓",
-      "CompanyName": "協和先進材料有限公司",
-      "CompanyTaxIDNumber": "53722420",
-      "PhoneNumber": "0932-212322",
-      "SalesTax": "9880",
-      "SalesTotalAmount": "197600",
-      "TotalAmount": "207480"
-    }
-  }
-}
-248.json
-Processing entries:   2%|▏         | 20/1258 [05:52<6:09:19, 17.90s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "檢查費 7000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869199",
-      "InvoiceDay": "10",
-      "InvoiceMonth": "7",
-      "InvoiceNumber": "44005125",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "新營區民榮里榮興路300號1樓之21號",
-      "CompanyName": "新堀工程有限公司",
-      "CompanyTaxIDNumber": "45897987",
-      "SalesTax": "350",
-      "SalesTotalAmount": "7000",
-      "TotalAmount": "7350"
-    }
-  }
-}
-251.json
-Processing entries:   2%|▏         | 21/1258 [06:12<6:23:04, 18.58s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "1台 63000 63000",
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869295",
-      "CompanyAddress": "龍津里中央路1段212巷24弄8號1樓",
-      "CompanyName": "揚億機械五金",
-      "CompanyTaxIDNumber": "92249935",
-      "InvoiceDay": "13",
-      "InvoiceMonth": "7",
-      "InvoiceYear": "112",
-      "PhoneNumber": "0972610900"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "21956556",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": null,
-      "InvoiceYear": null,
-      "SalesTax": "3150",
-      "SalesTotalAmount": "63000",
-      "TotalAmount": "66150"
-    }
-  }
-}
-254.json
-Processing entries:   2%|▏         | 22/1258 [06:36<6:52:22, 20.02s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "木條238*10.5*5cm 100 180 18000-",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": null,
-      "SalesTotalAmount": null,
-      "TotalAmount": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "17",
-      "InvoiceMonth": "9",
-      "InvoiceNumber": "40973269",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)包含發票號碼、日期、統編、買受人、銷售額、營業稅、總計、統編、公司名稱、地址、電話等",
-    "tail": {
-      "CompanyAddress": "桃園市大華里大興路558號",
-      "CompanyName": "天罡木業有限公司",
-      "CompanyTaxIDNumber": "86945175",
-      "PhoneNumber": "03-3641315",
-      "SalesTax": "900",
-      "SalesTotalAmount": "18000",
-      "TotalAmount": "18900"
-    }
-  }
-}
-268.json
-Processing entries:   2%|▏         | 23/1258 [06:55<6:48:49, 19.86s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "二台總機移設工程 142857",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威達企業有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "21",
-      "InvoiceMonth": "7",
-      "InvoiceNumber": "09277134",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園縣中福村興福街143號1F",
-      "CompanyName": "復發消防安全設備有限公司",
-      "CompanyTaxIDNumber": "16729266",
-      "PhoneNumber": "3136331",
-      "SalesTax": "5143",
-      "SalesTotalAmount": "142857",
-      "TotalAmount": "150000"
-    }
-  }
-}
-283.json
-Processing entries:   2%|▏         | 24/1258 [07:14<6:41:45, 19.53s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "營業人:宏鴻機械股份有限公司 統一編號:22945946 買受人:威建企業(甲)公司 總計新臺幣:126000",
-      "BuyerName": "威建企業(甲)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "Day": "1",
-      "InvoiceMonth": "8",
-      "InvoiceYear": "112",
-      "PhoneNumber": "03-3245954"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "52978502",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "SalesTax": "6000",
-      "SalesTotalAmount": "120000",
-      "SalesTotalTax": "0",
-      "TotalAmount": "126000"
-    }
-  }
-}
-297.json
-Processing entries:   2%|▏         | 25/1258 [07:32<6:33:04, 19.13s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "100 180 18000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "11",
-      "InvoiceMonth": "8",
-      "InvoiceNumber": "40973311",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市八德區大華里大興路558號",
-      "CompanyName": "天罡木業有限公司",
-      "CompanyTaxIDNumber": "86945175",
-      "SalesTax": "900",
-      "SalesTotalAmount": "18000",
-      "TotalAmount": "18900"
-    }
-  }
-}
-303.json
-Processing entries:   2%|▏         | 26/1258 [07:50<6:27:44, 18.88s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "機件鋁接 350250",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "15",
-      "InvoiceMonth": "8",
-      "InvoiceNumber": "09065512",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市茄苳里永興街37巷22弄16號",
-      "CompanyName": "台瑋真空企業有限公司",
-      "CompanyTaxIDNumber": "27284352",
-      "SalesTax": "17573",
-      "SalesTotalAmount": "350250",
-      "TotalAmount": "367763"
-    }
-  }
-}
-311.json
-Processing entries:   2%|▏         | 27/1258 [08:13<6:52:36, 20.11s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "NPUT106A 3600kg 115 414,000 NPUT106B 7200kg 115 828,000 運費 6,500",
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "南投縣南投市南崗三路5號",
-      "CompanyName": "台普化工股份有限公司",
-      "CompanyTaxIDNumber": "29086625",
-      "InvoiceDay": "20",
-      "InvoiceMonth": "08",
-      "InvoiceYear": "112",
-      "PhoneNumber": "(049)2263068"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "49057691",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "PhoneNumber": null,
-      "SalesTax": "62,425",
-      "SalesTotalAmount": "1,248,500",
-      "TotalAmount": "1,310,925"
-    }
-  }
-}
-313.json
-Processing entries:   2%|▏         | 28/1258 [08:38<7:19:07, 21.42s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "114,000",
-      "BuyerName": "(股)公司威建亞業",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "台北市松山區南京東路251巷24弄20之1號2樓",
-      "CompanyName": "統一協和先進材料有限公司",
-      "CompanyTaxIDNumber": "53722420",
-      "InvoiceDay": "20",
-      "InvoiceMonth": "8",
-      "InvoiceYear": "112",
-      "PhoneNumber": "0932-212322"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "(股)公司威建亞業",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "20",
-      "InvoiceMonth": "8",
-      "InvoiceNumber": "51985460",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台北市松山區南京東路251巷24弄20之1號2樓",
-      "CompanyName": "統一協和先進材料有限公司",
-      "CompanyTaxIDNumber": "53722420",
-      "PhoneNumber": "0932-212322",
-      "SalesTax": "5700",
-      "SalesTotalAmount": "114000",
-      "TotalAmount": "119700"
-    }
-  }
-}
-325.json
-Processing entries:   2%|▏         | 29/1258 [08:58<7:08:50, 20.94s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "五金零件 1件 11507 11507 (明細附註)",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869295",
-      "InvoiceDay": "25",
-      "InvoiceMonth": "8",
-      "InvoiceNumber": "09021478",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "PY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市蘆竹區瓦窯里南山路1段353號",
-      "CompanyName": "銘竈企業有限公司",
-      "CompanyTaxIDNumber": "23094465",
-      "PhoneNumber": "03-3520677",
-      "SalesTax": "525",
-      "SalesTotalAmount": "11507",
-      "TotalAmount": "11082"
-    }
-  }
-}
-327.json
-Processing entries:   2%|▏         | 30/1258 [09:20<7:17:01, 21.35s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "玻綫鐵圓管A 350pcs 1690- 591500- 玻綫鐵圓管B 200pcs 1690- 338000- 中6.3x60.3x3050mm",
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "3",
-      "InvoiceMonth": "8",
-      "InvoiceYear": "112",
-      "PhoneNumber": "03-4726638"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "3",
-      "InvoiceMonth": "8",
-      "InvoiceNumber": "42156065",
-      "InvoiceYear": "112"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市楊梅區上湖三路331巷65號",
-      "CompanyName": "金財興股份有限公司",
-      "CompanyTaxIDNumber": "89668104",
-      "SalesTax": "46475-",
-      "SalesTotalAmount": "929500-",
-      "TotalAmount": "975975-"
-    }
-  }
-}
-338.json
-Processing entries:   2%|▏         | 31/1258 [09:38<6:59:11, 20.50s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "零件加工 400 280 112,000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": null,
-      "SalesTotalAmount": null,
-      "TotalAmount": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "07",
-      "InvoiceMonth": "09",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式) 二年九、十月份",
-    "tail": {
-      "CompanyAddress": "新北市林口區仁愛路2段267巷1號7樓",
-      "CompanyName": "易德企業有限公司",
-      "CompanyTaxIDNumber": "56642630",
-      "PhoneNumber": "(03)327-4530"
-    }
-  }
-}
-341.json
-Processing entries:   3%|▎         | 32/1258 [09:59<6:58:57, 20.50s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "4個木箱, 300個, 單價93, 總計27900",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建包裝股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "11",
-      "InvoiceMonth": "9",
-      "InvoiceNumber": "40589567",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市文化里頂湖一街67巷11號",
-      "CompanyName": "致雄橡膠工業股份有限公司",
-      "CompanyTaxIDNumber": "43837129",
-      "PhoneNumber": "03-3282661",
-      "SalesTax": "2790",
-      "SalesTotalAmount": "58590",
-      "TotalAmount": "58590"
-    }
-  }
-}
-352.json
-Processing entries:   3%|▎         | 33/1258 [10:23<7:17:59, 21.45s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "169500",
-      "BuyerName": "威建工業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "台北市松山區南京東路5巷251巷24弄20之1號2樓",
-      "CompanyName": "瑞和先進材料有限公司",
-      "CompanyTaxIDNumber": "53722420",
-      "InvoiceDay": "8",
-      "InvoiceMonth": "9",
-      "InvoiceYear": "112",
-      "PhoneNumber": "0932-212322"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建工業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "8",
-      "InvoiceMonth": "9",
-      "InvoiceNumber": "51994053",
-      "InvoiceYear": "112"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台北市松山區南京東路5巷251巷24弄20之1號2樓",
-      "CompanyName": "瑞和先進材料有限公司",
-      "CompanyTaxIDNumber": "53722420",
-      "PhoneNumber": "0932-212322",
-      "SalesTax": "8475",
-      "SalesTotalAmount": "169500",
-      "TotalAmount": "177975"
-    }
-  }
-}
-380.json
-Processing entries:   3%|▎         | 34/1258 [10:41<6:59:48, 20.58s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "電梯維護費 2000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "2",
-      "InvoiceMonth": "10",
-      "InvoiceNumber": "09600140",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園縣中壢市同進五街24號",
-      "CompanyFullName": "威建企業股份有限公司",
-      "CompanyTaxIDNumber": "89901524",
-      "PhoneNumber": "03-3028266",
-      "SalesTax": "100",
-      "SalesTotalAmount": "2000",
-      "TotalAmount": "2100"
-    }
-  }
-}
-40.json
-Processing entries:   3%|▎         | 35/1258 [11:00<6:47:37, 20.00s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "汽車零件 39.1 120010",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "31",
-      "InvoiceMonth": "3",
-      "InvoiceNumber": "36244120",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "KY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "新北市五股區五工六路26號",
-      "CompanyName": "昇群汽車股份有限公司",
-      "CompanyTaxIDNumber": "84758318",
-      "SalesTax": "6001",
-      "SalesTotalAmount": "120010",
-      "TotalAmount": "126011"
-    }
-  }
-}
-409.json
-Processing entries:   3%|▎         | 36/1258 [11:20<6:46:53, 19.98s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "桶 38-3.5*5CM 100 180 18000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869295",
-      "InvoiceDay": "25",
-      "InvoiceMonth": "10",
-      "InvoiceNumber": "41061670",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市大順里大興路558號",
-      "CompanyName": "天罡木業有限公司",
-      "CompanyTaxIDNumber": "86945175",
-      "PhoneNumber": "03-3641315",
-      "SalesTax": "900",
-      "SalesTotalAmount": "18000",
-      "TotalAmount": "18900"
-    }
-  }
-}
-413.json
-Processing entries:   3%|▎         | 37/1258 [11:39<6:43:27, 19.83s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "五金零件 11380 (明細附件) 11380",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869295",
-      "InvoiceDay": "25",
-      "InvoiceMonth": "10",
-      "InvoiceNumber": "09087375",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市蘆竹區鳳里南山路1段353號",
-      "CompanyName": "銘立企業有限公司",
-      "CompanyTaxIDNumber": "23094465",
-      "PhoneNumber": "03-3520677",
-      "SalesTax": "569",
-      "SalesTotalAmount": "11380",
-      "TotalAmount": "11949"
-    }
-  }
-}
-416.json
-Processing entries:   3%|▎         | 38/1258 [11:53<6:04:29, 17.93s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "木條/1075x1475x1160 454",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869295",
-      "InvoiceDay": "30",
-      "InvoiceMonth": "10",
-      "InvoiceNumber": "41061677",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)"
-  }
-}
-42.json
-Processing entries:   3%|▎         | 39/1258 [12:05<5:29:44, 16.23s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "汽車材料 一批 107150",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "271788",
-      "InvoiceDay": "7",
-      "InvoiceMonth": "7",
-      "InvoiceNumber": "35236200",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "KY"
-    },
-    "rationale": "統一發票(三聯式)"
-  }
-}
-420.json
-Processing entries:   3%|▎         | 40/1258 [12:23<5:39:59, 16.75s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "床包組 1 2009 2000 車埔寨工程師用",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "31",
-      "InvoiceMonth": "10",
-      "InvoiceNumber": "58112861",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "RY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "內厝里安中街36巷6號",
-      "CompanyName": "活力熊企業社",
-      "CompanyTaxIDNumber": "49666137",
-      "SalesTax": "100",
-      "SalesTotalAmount": "2000",
-      "TotalAmount": "2100"
-    }
-  }
-}
-423.json
-Processing entries:   3%|▎         | 41/1258 [12:44<6:07:19, 18.11s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "2pcs 1570 3140 7pcs 1570 10990",
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "新北市蘆洲區上海三路551巷55號",
-      "CompanyName": "金財興股份有限公司",
-      "CompanyTaxIDNumber": "89668104",
-      "InvoiceDay": "2",
-      "InvoiceMonth": "11",
-      "InvoiceYear": "112",
-      "PhoneNumber": "03-4726688"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "42445104",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": "707",
-      "SalesTotalAmount": "14130",
-      "TotalAmount": "14837"
-    }
-  }
-}
-43.json
-Processing entries:   3%|▎         | 42/1258 [13:03<6:11:22, 18.32s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "汽車材料 一把 2700",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦寶高有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "11",
-      "InvoiceMonth": "7",
-      "InvoiceNumber": "35236273",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "KY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "高雄市新興區河南一路1-4號",
-      "CompanyName": "銀麒汽車材料行有限公司",
-      "CompanyTaxIDNumber": "97210798",
-      "PhoneNumber": "2371988",
-      "SalesTax": "175",
-      "SalesTotalAmount": "2700",
-      "TotalAmount": "2875"
-    }
-  }
-}
-430.json
-Processing entries:   3%|▎         | 43/1258 [13:21<6:07:27, 18.15s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "燻蒸工本費 1400",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "成建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "7",
-      "InvoiceMonth": "11",
-      "InvoiceNumber": "51371853",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台北市南港區興中路28巷28號9樓之1",
-      "CompanyName": "金潔環衛有限公司",
-      "CompanyTaxIDNumber": "29169224",
-      "SalesTax": "330",
-      "SalesTotalAmount": "1400",
-      "TotalAmount": "1670"
-    }
-  }
-}
-431.json
-Processing entries:   3%|▎         | 44/1258 [13:42<6:27:29, 19.15s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "100,000",
-      "BuyerName": "(股)公司威建企業",
-      "BuyerTaxIDNumber": "86369795",
-      "Day": "8",
-      "InvoiceMonth": "11",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "TY"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "(股)公司威建企業",
-      "BuyerTaxIDNumber": "86369795",
-      "InvoiceDay": "8",
-      "InvoiceMonth": "11",
-      "InvoicePrefixOneLetter": "T",
-      "InvoiceYear": "112",
-      "PrefixThreeNumbers": "521"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "BuyerName": "廣鋼材有限公司",
-      "CompanyAddress": "台北市德路3段212號8樓",
-      "CompanyName": "廣鋼材有限公司",
-      "CompanyTaxIDNumber": "53556914",
-      "InvoiceDay": "8",
-      "InvoiceMonth": "11",
-      "InvoicePrefixOneLetter": "T",
-      "InvoiceSuffixTwoLetters": "14",
-      "InvoiceYear": "112",
-      "SalesTax": "5000",
-      "SalesTotalAmount": "100000",
-      "TotalAmount": "105000"
-    }
-  }
-}
-462.json
-Processing entries:   4%|▎         | 45/1258 [14:01<6:25:55, 19.09s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "電梯維護費 2000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威達企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "22",
-      "InvoiceMonth": "11",
-      "InvoiceNumber": "09634044",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "新北市新鰲里興業街1號",
-      "CompanyName": "王森實業股份有限公司",
-      "CompanyTaxIDNumber": "89901524",
-      "PhoneNumber": "03-3028266",
-      "SalesTax": "100",
-      "SalesTotalAmount": "2000",
-      "TotalAmount": "2100"
-    }
-  }
-}
-467.json
-Processing entries:   4%|▎         | 46/1258 [14:21<6:31:41, 19.39s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "桶238x9.5x5cm 100 180 18000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869395",
-      "InvoiceDay": "24",
-      "InvoiceMonth": "11",
-      "InvoiceNumber": "41217619",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市大順里大興路558號",
-      "CompanyName": "天罡木業有限公司",
-      "CompanyTaxIDNumber": "86945175",
-      "PhoneNumber": "03-3641315",
-      "SalesTax": "900",
-      "SalesTotalAmount": "18000",
-      "TotalAmount": "18900"
-    }
-  }
-}
-488.json
-Processing entries:   4%|▎         | 47/1258 [14:46<7:02:04, 20.91s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "鋁材 556000",
-      "BuyerName": "(股份)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "台北市松山區德路3段212號8樓",
-      "CompanyName": "嘉廣鋼材有限公司",
-      "CompanyTaxIDNumber": "53556914",
-      "InvoiceDay": "30",
-      "InvoiceMonth": "11",
-      "InvoiceYear": "112",
-      "PhoneNumber": "0926-232167"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "30",
-      "InvoiceMonth": "11",
-      "InvoiceNumber": "52176855",
-      "InvoiceYear": "112"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台北市松山區德路3段212號8樓",
-      "CompanyName": "嘉廣鋼材有限公司",
-      "CompanyTaxIDNumber": "53556914",
-      "InvoiceDay": "30",
-      "InvoiceMonth": "11",
-      "InvoiceNumber": "52176855",
-      "InvoiceYear": "112",
-      "SalesTax": "27800",
-      "SalesTotalAmount": "556000",
-      "TotalAmount": "583800"
-    }
-  }
-}
-489.json
-Processing entries:   4%|▍         | 48/1258 [15:07<7:03:15, 20.99s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "岩栓水泥砂漿 600 元 145 87000",
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "新竹縣七星村六寮6之3號",
-      "CompanyName": "有力建材股份有限公司",
-      "CompanyTaxIDNumber": "16696764",
-      "InvoiceDay": "1",
-      "InvoiceMonth": "12",
-      "InvoiceYear": "112",
-      "PhoneNumber": "03-5809379"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "42630379",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": null,
-      "InvoiceYear": null,
-      "SalesTax": "4350",
-      "SalesTotalAmount": "87000",
-      "TotalAmount": "91350"
-    }
-  }
-}
-493.json
-Processing entries:   4%|▍         | 49/1258 [15:24<6:38:48, 19.79s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "金固材 450000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "1",
-      "InvoiceMonth": "12",
-      "InvoiceNumber": "52176860",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台北市松山區德路3段212號8樓",
-      "CompanyName": "廣鋼材有限公司",
-      "CompanyTaxIDNumber": "53556914",
-      "SalesTax": "22500",
-      "SalesTotalAmount": "472500"
-    }
-  }
-}
-500.json
-Processing entries:   4%|▍         | 50/1258 [15:45<6:45:26, 20.14s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "消化液 1 6000 20水 1 1750",
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86819095",
-      "CompanyAddress": "台北市八德路4段875號3樓之1",
-      "CompanyName": "快通衛生清潔社",
-      "CompanyTaxIDNumber": "13824230",
-      "InvoiceDay": "14",
-      "InvoiceMonth": "12",
-      "InvoiceYear": "112"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86819095",
-      "InvoiceDay": "14",
-      "InvoiceMonth": "12",
-      "InvoiceNumber": "50333353",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "南港區",
-      "CompanyName": "快通衛生清潔社",
-      "CompanyTaxIDNumber": "13824230",
-      "InvoiceSalesTax": "328",
-      "InvoiceTotalAmount": "8130",
-      "PrefixTwoLetters": "TY"
-    }
-  }
-}
-51.json
-Processing entries:   4%|▍         | 51/1258 [16:02<6:29:04, 19.34s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "冷氣零件 14200",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "31",
-      "InvoiceMonth": "3",
-      "InvoiceNumber": "01304210",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "KY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "高雄市苓雅區大順三路82號11",
-      "CompanyName": "雙湧實業有限公司",
-      "CompanyTaxIDNumber": "81173760",
-      "SalesTax": "710",
-      "SalesTotalAmount": "14200",
-      "TotalAmount": "14910"
-    }
-  }
-}
-520.json
-Processing entries:   4%|▍         | 52/1258 [16:20<6:16:18, 18.72s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "運費 107000",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "20",
-      "InvoiceMonth": "12",
-      "InvoiceNumber": "09767422",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市蘆竹區六福路5號",
-      "CompanyName": "雙合交通有限公司",
-      "CompanyTaxIDNumber": "16951407",
-      "SalesTax": "5750",
-      "SalesTotalAmount": "107000",
-      "TotalAmount": "112750"
-    }
-  }
-}
-527.json
-Processing entries:   4%|▍         | 53/1258 [16:39<6:17:43, 18.81s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "堆高機材料一批 4500",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "22",
-      "InvoiceMonth": "12",
-      "InvoiceNumber": "40290587",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "桃園市上興里興福街185號",
-      "CompanyName": "山德國際有限公司",
-      "CompanyTaxIDNumber": "69554379",
-      "PhoneNumber": "03-3231140",
-      "SalesTax": "225",
-      "SalesTotalAmount": "4500",
-      "TotalAmount": "4725"
-    }
-  }
-}
-53.json
-Processing entries:   4%|▍         | 54/1258 [16:55<6:03:23, 18.11s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "汽門 8 580 4640",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "CompanyAddress": "台北市大同區太原路115巷16號",
-      "CompanyName": "厚德交通器材有限公司",
-      "CompanyTaxIDNumber": "22982913",
-      "InvoiceDay": "6",
-      "InvoiceMonth": "4",
-      "InvoiceYear": "112"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "SalesTax": "232",
-      "SalesTotalAmount": "4640",
-      "TotalAmount": "4872"
-    }
-  }
-}
-534.json
-Processing entries:   4%|▍         | 55/1258 [17:15<6:17:00, 18.80s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "大隆箱 2872X2157X220 25596 熱處理費 3500",
-      "BuyerName": "威建企業(股)公司",
-      "BuyerTaxIDNumber": "8669795",
-      "CompanyAddress": "桃園市大順里大興路558號",
-      "CompanyName": "天罡木業有限公司",
-      "CompanyTaxIDNumber": "86945175",
-      "InvoiceDay": "29",
-      "InvoiceMonth": "12",
-      "InvoiceYear": "112",
-      "PhoneNumber": "03-3641315"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "41217687",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "PhoneNumber": null,
-      "SalesTax": "1469",
-      "SalesTotalAmount": "29396",
-      "TotalAmount": "30845"
-    }
-  }
-}
-535.json
-Processing entries:   4%|▍         | 56/1258 [17:36<6:25:54, 19.26s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "試驗費 6000",
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "新北市板橋區溪頭里長江路2段279號4樓",
-      "CompanyName": "鈞程有限公司",
-      "CompanyTaxIDNumber": "27263814",
-      "InvoiceDay": "29",
-      "InvoiceMonth": "12",
-      "InvoiceYear": "112",
-      "PhoneNumber": "02-26024618"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": "38795805",
-      "InvoiceYear": null,
-      "PrefixTwoLetters": "TY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceNumber": null,
-      "InvoiceYear": null,
-      "PhoneNumber": null,
-      "SalesTax": "300",
-      "SalesTotalAmount": "6000",
-      "TotalAmount": "6300"
-    }
-  }
-}
-538.json
-Processing entries:   5%|▍         | 57/1258 [17:57<6:37:13, 19.85s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "試驗費 64256",
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "CompanyAddress": "新北市板橋區漢頭里長江路2段279號4樓",
-      "CompanyName": "鈞程有限公司",
-      "CompanyTaxIDNumber": "27263814",
-      "InvoiceDay": "3",
-      "InvoiceMonth": "1",
-      "InvoiceYear": "113",
-      "PhoneNumber": "02-26024618"
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "威建企業股份有限公司",
-      "BuyerTaxIDNumber": "86869795",
-      "InvoiceDay": "3",
-      "InvoiceMonth": "1",
-      "InvoiceNumber": "38516954",
-      "InvoiceYear": "113"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "新北市板橋區漢頭里長江路2段279號4樓",
-      "CompanyName": "鈞程有限公司",
-      "CompanyTaxIDNumber": "27263814",
-      "SalesTax": "3213",
-      "SalesTotalAmount": "64256",
-      "TotalAmount": "67469"
-    }
-  }
-}
-54.json
-Processing entries:   5%|▍         | 58/1258 [18:14<6:18:42, 18.94s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "水塞 1380",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "InvoiceDay": "6",
-      "InvoiceMonth": "4",
-      "InvoiceNumber": "00261113",
-      "InvoiceYear": "112",
-      "PrefixTwoLetters": "KY"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "高雄市新興區南華路二路16號",
-      "CompanyName": "詮舜汽車材料行",
-      "CompanyTaxIDNumber": "14832321",
-      "SalesTax": "69",
-      "SalesTotalAmount": "1380",
-      "TotalAmount": "1449"
-    }
-  }
-}
-55.json
-Processing entries:   5%|▍         | 59/1258 [18:35<6:29:38, 19.50s/it]json is good!
-bad json is repaired!
-{
-  "gt_parse": {
-    "body": {
-      "Abstract": "零件一批另附明細 30,170",
-      "BuyerName": null,
-      "BuyerTaxIDNumber": null,
-      "CompanyAddress": null,
-      "CompanyName": null,
-      "CompanyTaxIDNumber": null,
-      "InvoiceDay": null,
-      "InvoiceMonth": null,
-      "InvoiceYear": null
-    },
-    "doc_class": "triple_receipt",
-    "header": {
-      "BuyerName": "建邦貿易有限公司",
-      "BuyerTaxIDNumber": "12361788",
-      "CompanyAddress": "台北市大同區太原路115巷16號",
-      "CompanyName": "厚德交通器材有限公司",
-      "CompanyTaxIDNumber": "22982913",
-      "InvoiceDay": "7",
-      "InvoiceMonth": "4",
-      "InvoiceNumber": "56155954",
-      "InvoiceYear": "112"
-    },
-    "rationale": "統一發票(三聯式)",
-    "tail": {
-      "CompanyAddress": "台北市大同區太原路115巷16號",
-      "InvoiceDay": "7",
-      "InvoiceMonth": "4",
-      "InvoiceNumber": "56155954",
-      "InvoiceYear": "112",
-      "SalesTax": "1509",
-      "SalesTotalAmount": "30170",
-      "TotalAmount": "31679"
-    }
-  }
-}
-556.json

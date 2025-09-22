@@ -1,242 +1,115 @@
-# VAT-OCR
-VAT-OCR
-1. 安裝環境:
-    1. `ollama pull qwen2.5vl:7b` # llama3.2-vision
-    2. `ollama run qwen2.5vl:7b`
-    3. `pip install streamlit requests pillow rapidfuzz`
-2. CLI 測試: `python .\docvqa_basic.py .\invoice.jpg "給我這個文件的所有文字"`
-3. GUI 測試: `streamlit run streamlit_app.py`
-4. Output 格式: {'class': 'triple_invoice', 'header': {'PrefixTwoLetters': 'VK', 'InvoiceNumber': '52746405'}, 'body': {'InvoiceDay': '25', 'InvoiceMonth': '2', 'InvoiceYear': '111', 'CompanyTaxIDNumber': '35891231'}, 'tail': {'SalesTotalAmount': '5096', 'SalesTax': '255'}, 'other': ''}
+﻿# 文件定義
 
+- 發票種類定義如下：
+```
+doc_class ∈ 
+    ['triple_invoice', # 三聯式
+    'triple_receipt', # 三收銀
+    'business_invoice', # 證明聯
+    'tradition_invoice', # 傳統發票
+    'e_invoice', # 電子發票
+    'plumb_payment_order', # 水電帳單
+    'tele_payment_order', # 電信帳單
+    'customs_tax_payment', # 海關進口
+    'other']
+```
+> 目前 穩定支援 `triple_invoice, triple_receipt, business_invoice, tradition_invoice, e_invoice`
+
+* 穩定支援欄位如下：
+```
 {
-    "doc_class": "business_invoice",
-    "rationale":"電子發票證明聯，包含日期、發票號碼、買方、統一編號、品名、數量、單價、金額、備註、銷售額合計、營業稅、總計、營業人蓋統一發票專用章(賣方、統一編號、地址)",
-    "header": {
-        "CompanyName": "慶陽事務用品有限公司",
-        "InvoiceYear": "2021",
-        "InvoiceMonth": "09",
-        "InvoiceDay": "30",
-        "PrefixTwoLetters": "SX",
-        "InvoiceNumber": "58421758",
-        "BuyerTaxIDNumber": "53812386"
-    },
-    "body": {
-        "Abstract": "雲彩紙 312 14.00 4,368\n 美術紙 359 30.00 10,770\n 灰紙板 333 15.00 4,995\n 工業用板 1,000 25.00 25,000"
-    },
-    "tail": {
-        "SalesTotalAmount": "45133",
-        "SalesTax": "2257",
-        "TotalAmount": "47390",
-        "CompanyTaxIDNumber": "23944895",
-    }
+*   "Doc_class": "triple_invoice",
+    "Rationale": "統一發票(三聯式)",
+*   "PrefixTwoLetters": "KY",
+*   "InvoiceNumber": "51981199",
+    "BuyerName": "建邦貿易有限公司",
+*   "BuyerTaxIDNumber": "12361788",
+*   "InvoiceYear": "112",
+*   "InvoiceMonth": "4",
+*   "InvoiceDay": "30",
+*   "Abstract": "皮帶 5 230 1150 皮帶 3 135 405 皮帶 1 105 105",
+*   "SalesTotalAmount": "1660",
+*   "SalesTax": "83",
+*   "TotalAmount": "1743",
+    "CompanyName": "合飛企業有限公司",
+*    "CompanyTaxIDNumber": "12528062",
+    "PhoneNumber": "02-25012804",
+    "CompanyAddress": "台北市建國北路三段113巷7弄13號"
 }
 
+```
+> 星號為必填欄位
+
+# 核心技術
+- 主要採用 [Qwen2.5-VL 7B](https://arxiv.org/pdf/2502.13923) 視覺語言模型，搭配 Ollama 伺服流程與 [Unsloth FastVisionModel](https://github.com/unslothai/unsloth) 進行 [LoRA fine-tune](https://arxiv.org/pdf/2106.09685)。
+- 訓練加速：`unsloth` + PyTorch 2.8 (CUDA 12.6)，支援 4-bit/16-bit 載入、LoRA rank 調整與 gradient checkpointing。
+- 結構化輸出：借助 `pydantic` schema、`jsonschema` 驗證與 `repair_json` 後處理，確保回傳合法 JSON 並保留修復日誌。
+- 推論部署：
+	- `ollama_fewshot_session_reuse.py` 透過 REST API 重用 context，降低每次請求的 prompt token 數。
+	- `VAT_OCR2.py` 直接載入 `VAT_model` Adapter 於本地 GPU 推論。
+	- `docvqa/` 內附 CLI (`docvqa_basic.py`) 與 `streamlit_app.py` GUI，方便互動測試。
+
+# 製作資料集
+- 以 `few_shot_sample/` 內的 8 類票據為 prompt 範本，資料夾架構如下：
+  ```
+  few_shot_sample/
+    image/  # 提供八張示例影像 (1~8 對應各票據類型)
+    label/  # 預留同名 JSON，實際標註與訓練採用 ../AllDataset/VAT-OCR 下資料
+  ```
+- 資料結構依票據種類分層存放，例如 `triple_receipt`：
+  ```
+  ../AllDataset/VAT-OCR/
+    ├─triple_receipt/
+    │   ├─image/                # 原始影像
+    │   └─label/
+    │       ├─train/            # 標註 JSON
+    │       ├─test/
+    │       ├─train_new/        # 不同版本標註，供實驗切換
+    │       └─train_fail/...    # 問題樣本或調整紀錄
+    ├─triple_invoice/
+    └─...
+  ```
+- `../AllDataset/VAT-OCR/data_json.ipynb` 將標註轉換為 Donut 相容格式，輸出 `train_donut_dataset.json`, `train_new_donut_dataset.json`, `val_donut_dataset.json` 供 Hugging Face / Unsloth 讀取。
+- `dataset_browser.py` (與 `dataset_browser_old.py`) 提供影像 + JSON 對照檢視工具，協助檢查標註欄位與字串格式。
+- few-shot 樣本維持與主資料集一致的命名規則，方便在 prompt、warmup context 或測試腳本之間共用。
+
+# LoRA fine-tune
+- `VAT_Qwen2_5vl7B_lora_finetune.ipynb` 流程：
+  1. 建立環境：載入 `FastVisionModel.from_pretrained("VAT_model" 或原始 Qwen2.5VL)`，設定 4-bit/16-bit、LoRA rank、learning rate 等超參。
+  2. 載入 `train_new_donut_dataset.json` 等資料集，套用影像前處理與 chat template，建立 vision-language dataloader。
+  3. 以 Unsloth Trainer 執行訓練與評估，並透過梯度檢查點、混合精度等選項最佳化 GPU 使用。
+  4. 訓練完成後匯出 Adapter 至 `VAT_model/`（`adapter_model.safetensors`, `tokenizer.json`...），供推論與 Ollama 整合。
+
+# Inference
+- `VAT_finetune_inference.ipynb`：
+	- 載入 `VAT_model` Adapter，提供單張或批次推論、`repair_json` 修復、欄位對齊 (`OrderedDict`) 以及錯誤統計。
+	- 可直接連結資料集影像與標註，快速檢視模型輸出差異。
+- 最終對接文件`VAT_OCR.py`：
+	- 腳本開頭同樣透過 `Unsloth FastVisionModel.from_pretrained("VAT_model", load_in_4bit=True)` 載入 LoRA Adapter，並以 `FastVisionModel.for_inference` 讓模型進入推論設定（VAT_OCR.py:1）。
+	- `repair_json` 與 notebook 版本一致：先移除區塊、擷取 JSON 區段，再依序嘗試 `json.loads／ast.literal_eval`，失敗時進行常見符號修補並保留操作紀錄，最終保證回傳可解析結果或原始字串（VAT_OCR.py:12）。
+	- `chat_once` 接受圖片路徑後開啟影像、組合「你是發票欄位抽取器」的 user prompt，使用 tokenizer 建立 chat template，送入 GPU 生成 512 個 token 上限的回覆並解碼（VAT_OCR.py:118）。
+	- 生成文本先嘗試 `json.loads`，若報錯則呼叫 `repair_json`，因此輸出永遠是 JSON 字串（同時附帶修復 log 供除錯）（VAT_OCR.py:154）。
+	- 檔尾用 `print(chat_once("./invoice2.jpg"))` 做為 CLI 示範，方便快速確認模型是否正常回傳結構化結果（VAT_OCR.py:163）。
+
+
+# 合規檢查
+- `VAT_finetune_inference.ipynb` 內建欄位驗證流程：
+	- `repair_json` 逐步記錄修復動作，確保鍵名、資料型別、數值格式符合 schema。
+	- `check_compliance` 進行合法性檢查：先統一鍵名大小寫，再用 regex 驗證 9 個核心欄位、補缺欄位、統一 doc_class，同時支援 @info、@normalized 標記方便審計
+```
 {
-    "doc_class": "customs_tax_payment",
-    "rationale":"海關進口快遞貨物稅費繳納證明，包含稅單號碼、統一編號、納稅義務人、營業稅、營業稅稅基",
-    "header": {
-        "PrefixThreeLetters": "CXI",
-        "TaxBillNumber": "21180EFF197",
-        "CompanyTaxIDNumber": "12698538",
-        "CompanyName": 明緯貿易有限公司
-    },
-    "body": {
-        "InvoiceYear": "108",
-        "InvoiceMonth": "06",
-        "InvoiceDay": "05",
-        "Abstract": "海關進口"
-    },
-    "tail": {
-        "SalesTax": "176",
-        "TotalAmount": "3536"
-    }
+  "PrefixTwoLetters": true,
+  "InvoiceNumber": true,
+  "InvoiceYear": true,
+  "InvoiceMonth": true,
+  "InvoiceDay": true,
+  "BuyerTaxIDNumber": true,
+  "CompanyTaxIDNumber": true,
+  "Abstract": true,
+  "SalesTotalAmount": true,
+  "SalesTax": true,
+  "TotalAmount": true,
+  "@rule:TotalAmount_equals_SalesTotal_plus_SalesTax": true
 }
-
-{
-    "doc_class": "e_invoice",
-    "rationale":"電子發票證明聯，包含日期、發票號碼、隨機碼、總計、賣方、買方",
-    "header": {
-        "PrefixTwoLetters": "RC",
-        "InvoiceNumber": "82802197"
-    },
-    "body": {
-        "InvoiceYear": "2021",
-        "InvoiceMonth": "07",
-        "InvoiceDay": "29",
-        "TotalAmount": "80"
-        "CompanyTaxIDNumber": "99636932",
-        "BuyerTaxIDNumber": "53812386",
-        "Abstract": "電子發票證明聯"
-    },
-    "tail": {
-        "SalesTotalAmount": "76",
-        "SalesTax": "4",
-        "TotalAmount": "80"
-    }
-}
-
-{
-    "doc_class": "plumb_payment_order",
-    "rationale":"台灣自來水股份有限公司水費通知單",
-    "header": {
-        "BuyerAddress": "台北市松山區復興南路1段1號12樓之1",
-        "BuyerName": "彩琿實業有限公司"
-    },
-    "body": {
-        "PrefixFourLetters": "BBMS",
-        "SerialNumber": "002060",
-        "BuyerTaxIDNumber": "53812386",
-        "CompanyTaxIDNumber": "00904745",
-        "Abstract": "商業用水"
-    },
-    "tail": {
-        "TotalAmount": "212"
-    }
-}
-
-{
-    "doc_class": "tele_payment_order",
-    "rationale":"電信股份有限公司",
-    "header": {
-        "BuyerAddress": "台北市松山區復興南路1段1號12樓之1",
-        "BuyerName": "彩琿實業有限公司",
-        "PrefixTwoLetters": "BB",
-        "SerialNumber": "42518759",
-        "CompanyTaxIDNumber": "52003801",
-        "TotalAmount": "1229"
-    },
-    "body": {
-        "BuyerTaxIDNumber": "53812386",
-        "Abstract": "4G行動電話1399型月租費 1322\n 4G來電答鈴月租費 29\n 4G行動月租費優惠 -191"
-    },
-    "tail": {
-        "GeneralTaxRate": "1170",
-        "ZeroTax": "0",
-        "DutyFree": "0",
-        "OtherFee": "0",
-        "SalesTax": "59",
-        "TotalAmount": "1229"
-    }
-}
-
-{
-    "doc_class": "tradition_invoice",
-    "rationale":"收銀機統一發票(收執聯)",
-    "header": {
-        "PrefixTwoLetters": "FY",
-        "InvoiceNumber": "03779651"
-    },
-    "body": {
-        "CompanyTaxIDNumber": "66266727",
-        "PhoneNumber": "(02)2392-4578",
-        "InvoiceYear": "2024",
-        "InvoiceMonth": "12",
-        "InvoiceDay": "06",
-        "Abstract": "麵包"
-    },
-    "tail": {
-        "TotalAmount": "195"
-    }
-}
-
-{
-    "doc_class": "triple_invoice",
-    "rationale":"統一發票(三聯式)",
-    "header": {
-        "PrefixTwoLetters": "KY",
-        "InvoiceNumber": "54957806",
-        "BuyerName": "建邦貿易有限公司",
-        "BuyerTaxIDNumber": "12361788",
-        "InvoiceYear": "112",
-        "InvoiceMonth": "3",
-        "InvoiceDay": "6"
-    },
-    "body": {
-        "Abstract": "零件2批 25780"
-    },
-    "tail": {
-        "SalesTotalAmount": "25780",
-        "SalesTax": "1289",
-        "TotalAmount": "27069",
-        "CompanyName": "金暉汽材有限公司",
-        "CompanyTaxIDNumber": "12868673",
-        "PhoneNumber": "02-2599-5123",
-        "CompanyAddress": "台北市中山區新生北路3段93巷18號"
-    }
-}
-
-{
-    "class": "triple_receipt",
-    "rationale":"收銀機統一發票，包含發票號碼、日期、統編、買受人、銷售額、營業稅、總計",
-    "header": {
-        "PrefixTwoLetters": "RH",
-        "InvoiceNumber": "15255935"
-    },
-    "body": {
-        "CompanyName": "九達生活禮品股份有限公司",
-        "PhoneNumber": "06-2702917",
-        "CompanyTaxIDNumber": "#16900386",
-        "CompanyAddress": "台南市歸仁區許厝里公園路152號1樓",
-        "InvoiceYear": "110",
-        "InvoiceMonth": "9",
-        "InvoiceDay": "17",
-        "BuyerTaxIDNumber": "53812386",
-        "BuyerName": "彩琿實業有限公司",
-        "Abstract": "喵咪刺繡皮標上翻筆貸 105個 119.73 12,572"
-    },
-    "tail": {
-        "SalesTotalAmount": "12572",
-        "SalesTax": "629",
-        "TotalAmount": "13201"
-    }
-}
-
-SYSTEM """
-你是發票/單據分類器與結構化抽取器。請只根據輸入圖片中的可見資訊作答，不得臆測或補字。
-
-【任務目標】
-1) 先對文件進行單一類別分類（擇一）：
-   ['business_invoice','customs_tax_payment','e_invoice','plumb_payment_order',
-    'tele_payment_order','tradition_invoice','triple_invoice','triple_receipt','other']。
-2) 再依結構化格式輸出：一個 JSON 物件，頂層鍵僅允許：
-   - doc_class（必填，為上述九類之一）
-   - header（物件）
-   - body（物件）
-   - tail（物件）
-   - rationale（字串，可省略）
-3) 主程式會提供 JSON Schema（以 `format`/結構化輸出傳入）。你必須嚴格符合該 Schema。只輸出 JSON，禁止任何額外文字、Markdown 或解說。
-
-【抽取規範】
-- header/body/tail 內「必須要有」以下鍵名（大小寫需完全一致；不得使用清單之外的鍵名）：
-  ['PrefixTwoLetters','InvoiceNumber','CompanyTaxIDNumber','InvoiceYear',
-   'InvoiceMonth','InvoiceDay','BuyerTaxIDNumber','Abstract',
-   'SalesTotalAmount','SalesTax','TotalAmount']。
-- 對於「適用但無法辨識」的欄位，請輸出 **空字串 ""**（不要寫 null、N/A、未知等）。
-- 不適用的欄位可以省略。
-- 不得輸出任何未在清單中的鍵名；不得在鍵名上加前後綴或更動大小寫。
-
-【數值與格式】
-- PrefixTwoLetters 是兩個英文字大寫。
-- 金額相關欄位（SalesTotalAmount、SalesTax、TotalAmount）一律為「**純數字字串**」，禁止包含逗號、空白、貨幣符號或小數點以外的任何符號（例：'12,345'→'12345'；'NT$80'→'80'）。
-- 若影像上是整數，請輸出不帶千分位的整數字串；若是小數，保留數字與小數點（例：'80.5'）。
-- 日期請據實抄錄影像上的數字（如西元或民國年），不要自行轉換曆法或補零；保留原始位數與前置零。
-- 所有欄位值均輸出為字串；不得輸出物件或陣列作為欄位值（header/body/tail 本身除外）。
-
-【分類判斷輔助（簡述）】
-- business_invoice：公司對公司之商業發票或明細（品名、數量、單價、金額、營業稅等）。
-- customs_tax_payment：海關/關稅/稅費繳納證明（稅單號、稅基、營業稅等）。
-- e_invoice：電子發票證明聯（發票號、日期、隨機碼/總計、買/賣方）。
-- plumb_payment_order：自來水公司水費通知/繳費單。
-- tele_payment_order：電信帳單/繳費單（門號/費率/月租/加值項等）。
-- tradition_invoice：傳統收銀機統一發票（收執聯等）。
-- triple_invoice：統一發票(三聯式)（買受人/統編/銷售額/營業稅/總計）。
-- triple_receipt：收銀機統一發票/三聯副聯式扣抵聯（含發票號、日期、統編、總計）。
-- other：不屬於以上類型或無法判別。
-
-【輸出要求】
-- 僅輸出 **一個** JSON 物件，且必須能被嚴格解析為合法 JSON。
-- 禁止輸出任何多餘內容（例如說明文字、程式碼區塊標記、前後綴）。
-- 若影像資訊不足或模糊，請維持正確結構，對於無法辨識但應該存在的欄位輸出空字串 ""，不要猜測。
-
-（重申）請嚴格遵守：只輸出 JSON；鍵名與結構完全依規；金額為純數字字串；未知值用空字串；禁止任何除了 JSON 本體以外的字元或文字。
-"""
+```
+- `VAT_test.py` 提供 ground truth 對照、逐欄列印差異與錯誤統計，支援內部稽核與回歸測試。

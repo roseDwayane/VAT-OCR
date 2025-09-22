@@ -1,139 +1,163 @@
-#!/usr/bin/env python3
-from __future__ import annotations
-from typing import Literal, Optional, Dict, Any
-from pydantic import BaseModel
-from ollama import chat
-import sys
-import json
-import base64
-
-def img_to_b64(path: str) -> str:
-    with open(path, 'rb') as f:
-        return base64.b64encode(f.read()).decode('utf-8')
-
-triple_receipt = """{
-    "doc_class": "triple_receipt",
-    "rationale":"收銀機統一發票，包含發票號碼、日期、統編、買受人、銷售額、營業稅、總計",
-    "header": {
-        "PrefixTwoLetters": "RH",
-        "InvoiceNumber": "15255935"
-    },
-    "body": {
-        "CompanyName": "九達生活禮品股份有限公司",
-        "PhoneNumber": "06-2702917",
-        "CompanyTaxIDNumber": "#16900386",
-        "CompanyAddress": "台南市歸仁區許厝里公園路152號1樓",
-        "InvoiceYear": "110",
-        "InvoiceMonth": "9",
-        "InvoiceDay": "17",
-        "BuyerTaxIDNumber": "53812386",
-        "BuyerName": "彩琿實業有限公司",
-        "Abstract": "喵咪刺繡皮標上翻筆貸 105個 119.73 12,572"
-    },
-    "tail": {
-        "SalesTotalAmount": "12572",
-        "SalesTax": "629",
-        "TotalAmount": "13201"
-    }
-}
-"""
-
-ex8_img_path = './few_shot_sample/image/8_triple_receipt.jpg'
-
-shots = [
-    # 8.
-    {
-        'role': 'user',
-        'content': '請分類這張文件',
-        'images': [img_to_b64(ex8_img_path)],
-    },
-    {
-        'role': 'assistant',
-        'content': triple_receipt,
-    },
-]
-
-# ====== JSON Schema（Pydantic）======
-DocClass = Literal[
-    'business_invoice','customs_tax_payment','e_invoice','plumb_payment_order',
-    'tele_payment_order','tradition_invoice','triple_invoice','triple_receipt','other'
-]
-
-class Doc(BaseModel):
-    doc_class: DocClass
-    header: Optional[Dict[str, Optional[str]]] = None
-    body:   Optional[Dict[str, Optional[str]]] = None
-    tail:   Optional[Dict[str, Optional[str]]] = None
-    rationale: Optional[str] = None
-
-# ====== 工具：回退解析器（模型若夾雜文字時擷取首段 JSON）======
-def _extract_first_json_block(text: str) -> str:
-    depth = 0
-    start = -1
-    for i, ch in enumerate(text or ""):
-        if ch == '{':
-            if depth == 0:
-                start = i
-            depth += 1
-        elif ch == '}':
-            if depth > 0:
-                depth -= 1
-                if depth == 0 and start != -1:
-                    return text[start:i+1]
-    return text
-
-# ====== 單張圖片推論 ======
-def infer_image_json(
-    img_path: str,
-    model: str = 'invoice-cls',   # 使用你剛 create 的本地模型名
-) -> str:
-    user_prompt = (
-        "請分類這張文件並輸出單一 JSON："
-        "1) 給出 doc_class（九類其一）；"
-        "2) 依 header/body/tail 結構輸出欄位；未知請為 null 或省略；"
-        "3) 可附上 rationale（可省略）；只輸出 JSON，勿加解說。"
+if True:
+    from unsloth import FastVisionModel
+    model, tokenizer = FastVisionModel.from_pretrained(
+        model_name = "VAT_model", # YOUR MODEL YOU USED FOR TRAINING
+        load_in_4bit = True, # Set to False for 16bit LoRA
     )
+    FastVisionModel.for_inference(model) # Enable for inference!
 
-    b64 = img_to_b64(img_path)
+import re, json, ast
+from typing import Tuple, Any, List, Optional
+
+def repair_json(s: str, schema: Optional[dict] = None) -> Tuple[str, Any, List[str]]:
+    """
+    將「幾乎 JSON」的字串修復成合法 JSON。
+    回傳: (fixed_text, obj, logs)
+      fixed_text: 修復後的 JSON 字串
+      obj:        對應的 Python 物件 (dict/list)
+      logs:       修復步驟紀錄
+    """
+    logs: List[str] = []
+    text = s.strip()
+
+    # 0) 去掉 ```json ... ``` 或一般 ``` 區塊外殼
+    if "```" in text:
+        text = re.sub(r"```(?:json|JSON)?", "", text)
+        text = text.replace("```", "")
+        text = text.strip()
+        logs.append("removed code fences")
+
+    # 1) 只擷取最外層 {...} 或 [...]
+    def _extract_json_region(t: str) -> str:
+        lb, rb = t.find("{"), t.rfind("}")
+        if lb != -1 and rb != -1 and rb > lb:
+            return t[lb:rb+1]
+        lb, rb = t.find("["), t.rfind("]")
+        if lb != -1 and rb != -1 and rb > lb:
+            return t[lb:rb+1]
+        return t
+
+    text2 = _extract_json_region(text)
+    if text2 != text:
+        logs.append("extracted outer JSON-like region")
+        text = text2
+
+    # 2) 嘗試標準 JSON
+    try:
+        obj = json.loads(text)
+        logs.append("parsed by json")
+        if schema:
+            from jsonschema import validate
+            validate(obj, schema); logs.append("validated by jsonschema")
+        return json.dumps(obj, ensure_ascii=False, indent=2), obj, logs
+    except Exception as e:
+        logs.append(f"json.loads failed: {e}")
+
+    # 3) 用 ast.literal_eval 吃單引號/尾逗號 等 Python 字面量
+    try:
+        obj = ast.literal_eval(text)
+        logs.append("parsed by ast.literal_eval")
+        if schema:
+            from jsonschema import validate
+            validate(obj, schema); logs.append("validated by jsonschema")
+        return json.dumps(obj, ensure_ascii=False, indent=2), obj, logs
+    except Exception as e:
+        logs.append(f"ast.literal_eval failed: {e}")
+
+    # 4) 常見修補：彎引號→直引號、True/False/None→JSON、刪尾逗號、單引號→雙引號
+    fixed = text.translate(str.maketrans({
+        "\u201c": '"', "\u201d": '"', "\u2018": "'", "\u2019": "'",
+    }))
+    if fixed != text:
+        logs.append("normalized curly quotes")
+
+    # Python 常量 → JSON 常量
+    fixed2 = re.sub(r'(?<!")\bTrue\b(?!")', "true", fixed)
+    fixed2 = re.sub(r'(?<!")\bFalse\b(?!")', "false", fixed2)
+    fixed2 = re.sub(r'(?<!")\bNone\b(?!")', "null", fixed2)
+    if fixed2 != fixed:
+        logs.append("converted Python literals to JSON")
+    fixed = fixed2
+
+    # 移除尾逗號
+    no_trailing_commas = re.sub(r",\s*([}\]])", r"\1", fixed)
+    if no_trailing_commas != fixed:
+        logs.append("removed trailing commas")
+    fixed = no_trailing_commas
+
+    # 粗略：單引號 → 雙引號（在中文內容通常安全）
+    dq = re.sub(r"(?<!\\)'", '"', fixed)
+    if dq != fixed:
+        logs.append("replaced single quotes with double quotes")
+    fixed = dq
+
+    # 5) 最終嘗試標準 JSON
+    try:
+        obj = json.loads(fixed)
+        logs.append("fixed manually then parsed by json")
+        if schema:
+            from jsonschema import validate
+            validate(obj, schema); logs.append("validated by jsonschema")
+        return json.dumps(obj, ensure_ascii=False, indent=2), obj, logs
+    except Exception as e:
+        logs.append(f"final json.loads failed: {e}")
+        # 兜底：包 raw
+        fallback = {"raw": s}
+        if schema:
+            logs.append("returned raw because schema validation/parse failed")
+        return json.dumps(fallback, ensure_ascii=False, indent=2), fallback, logs
+    
+
+from pathlib import Path
+import json
+from PIL import Image
+
+FastVisionModel.for_inference(model)  # inference 模式
+
+
+def chat_once(image_path):
+    image = Image.open(image_path).convert("RGB")
+    instruction = "你是發票/單據分類器與結構化抽取器，請辨識這張文件"
 
     messages = [
-        *shots,
-        {"role": "user", "content": user_prompt, "images": [b64]},
+        {"role": "user", "content": [
+            {"type": "image"},
+            {"type": "text", "text": instruction}
+        ]}
     ]
 
-    # 優先：Structured Outputs（最穩）
-    try:
-        resp = chat(
-            model=model,
-            messages=messages,
-            stream=False,
-            options={"temperature": 0, "seed": 42},
-            format=Doc.model_json_schema(),   # 關鍵：強制符合 Schema
-        )
-        return resp.message.content
-    except Exception:
-        # 後備：無 format，再從文字中抽 JSON
-        resp = chat(
-            model=model,
-            messages=messages,
-            stream=False,
-            options={"temperature": 0, "seed": 42},
-        )
-        return _extract_first_json_block(resp.message.content)
+    # 準備輸入
+    input_text = tokenizer.apply_chat_template(messages, add_generation_prompt=True)
+    inputs = tokenizer(
+        image,
+        input_text,
+        add_special_tokens=False,
+        return_tensors="pt",
+    ).to("cuda")
 
-# ====== CLI ======
-if __name__ == "__main__":
-    img_path = sys.argv[1] if len(sys.argv) > 1 else "./invoice2.jpg"
-    print("I'm processing")
-    out = infer_image_json(img_path)
-    # 若你想驗證 Schema，可反序列化看看
+    # 產生（不使用 streamer，改成一次取回）
+    gen_ids = model.generate(
+        **inputs,
+        max_new_tokens=512,
+        use_cache=True,
+        temperature=0.1,
+        min_p=0.1,
+        do_sample=True,              # 若你想要可重現，可改成 False
+        eos_token_id=tokenizer.eos_token_id,
+        pad_token_id=tokenizer.pad_token_id,
+    )
+
+    # 只取「模型新產生」的 token，排除提示部分
+    prompt_len = inputs["input_ids"].shape[1]
+    new_token_ids = gen_ids[0, prompt_len:]
+
+    output_text = tokenizer.decode(new_token_ids, skip_special_tokens=True).strip()
+
     try:
-        parsed = Doc.model_validate_json(out)
-        print(parsed.model_dump_json(ensure_ascii=False, indent=2))
+        result = json.loads(output_text)
     except Exception:
-        # 仍印出原始（多半已是 JSON 字串）
-        try:
-            obj = json.loads(out)
-            print(json.dumps(obj, ensure_ascii=False, indent=2))
-        except Exception:
-            print(out)
+        result, obj, logs = repair_json(output_text)
+
+    return result
+
+print(chat_once("./invoice2.jpg"))

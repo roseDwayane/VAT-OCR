@@ -6,7 +6,7 @@ from collections import OrderedDict
 
 # Import inference helpers from docvqa_final2
 # from docvqa_final2 import infer_image_json, _extract_first_json_block, chat_once, build_messages_for_image, img_to_b64  # noqa: F401
-from VAT_OCR2 import chat_once
+from VAT_OCR import chat_once
 
 def extract_ground_truth(d: dict) -> dict:
     # 依指定順序輸出 9 個欄位；缺值給空字串

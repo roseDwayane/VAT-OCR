@@ -210,14 +210,14 @@ triple_receipt = """{
 """
 
 # Few-shot examples using repository images
-ex1_img_path = './few_shot_sample/image/1_business_invoice.jpg'
-ex2_img_path = './few_shot_sample/image/2_customs_tax_payment.jpg'
-ex3_img_path = './few_shot_sample/image/3_e_invoice.jpg'
-ex4_img_path = './few_shot_sample/image/4_plumb_payment_order.jpg'
-ex5_img_path = './few_shot_sample/image/5_tele_payment_order.jpg'
-ex6_img_path = './few_shot_sample/image/6_tradition_invoice.jpg'
-ex7_img_path = './few_shot_sample/image/7_triple_invoice.jpg'
-ex8_img_path = './few_shot_sample/image/8_triple_receipt.jpg'
+ex1_img_path = '../few_shot_sample/image/1_business_invoice.jpg'
+ex2_img_path = '../few_shot_sample/image/2_customs_tax_payment.jpg'
+ex3_img_path = '../few_shot_sample/image/3_e_invoice.jpg'
+ex4_img_path = '../few_shot_sample/image/4_plumb_payment_order.jpg'
+ex5_img_path = '../few_shot_sample/image/5_tele_payment_order.jpg'
+ex6_img_path = '../few_shot_sample/image/6_tradition_invoice.jpg'
+ex7_img_path = '../few_shot_sample/image/7_triple_invoice.jpg'
+ex8_img_path = '../few_shot_sample/image/8_triple_receipt.jpg'
 
 shots = [
     # 1.
