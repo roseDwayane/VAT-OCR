@@ -212,6 +212,7 @@ outputs/
 unsloth_compiled_cache/
 llama_cpp/
 VAT_model/
+VAT_model_small/
 
 *.gguf
 
